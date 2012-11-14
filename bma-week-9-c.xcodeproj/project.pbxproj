@@ -28,7 +28,7 @@
 		3EA767401651BD4200501BBD /* bma-week-9-c */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "bma-week-9-c"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA767441651BD4200501BBD /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		3EA767461651BD4200501BBD /* AddressesAndPointers.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = AddressesAndPointers.1; sourceTree = "<group>"; };
-		3EA7674D1651D36A00501BBD /* AddressesAndPointers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressesAndPointers.h; sourceTree = "<group>"; };
+		3EA8BCA01653DD7F006B06FD /* bma-week-9-c.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bma-week-9-c.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 			children = (
 				3EA767441651BD4200501BBD /* main.c */,
 				3EA767461651BD4200501BBD /* AddressesAndPointers.1 */,
-				3EA7674D1651D36A00501BBD /* AddressesAndPointers.h */,
+				3EA8BCA01653DD7F006B06FD /* bma-week-9-c.h */,
 			);
 			name = "bma-week-9-c";
 			path = AddressesAndPointers;

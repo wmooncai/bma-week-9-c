@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include "bma-week-9-c.h"
 
 #define SUCCESS 0
 #define FAIL 1
