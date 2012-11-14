@@ -157,7 +157,15 @@ int week9ClassHWPartA()
 
 int week9ClassHWPartB()
 {
+    printf("HW Part B:\n\nCountdown from 99 to 0\n\n");
     
+    for (int i=99; i > -1; i = i - 3)
+    {
+        printf("- %d\n", i);
+        if ( ( i % 5) == 0 ) printf("- Found one!\n");
+    }
+
+    printf("\n----------------------------\n\n");
     
     return SUCCESS;
 }
@@ -166,6 +174,11 @@ int week9ClassHWPartB()
 
 int week9ClassHWPartC()
 {
+    printf("HW Part C:\n\nThe size of a float is %ld bytes.\n\n"
+           , sizeof(float));
+
+    printf("----------------------------\n\n");
+
     return SUCCESS;
 }
 
@@ -173,7 +186,7 @@ int week9ClassHWPartC()
 
 int week9ClassHWPartD()
 {
-    printf("HW Part D: Conversion between Cartesian and Polar coordinates.  ");
+    printf("HW Part D:\n\nConversion between Cartesian and Polar coordinates.  ");
     printf("See book.\n\n");
     
     double x = 3.0;
@@ -224,7 +237,11 @@ int main(int argc, const char * argv[])
     printf("      Week 9 Homework\n");
     printf("\n############################\n\n");
 
-    week9ClassHWPartA();
+    week9ClassHWPartA(); // sin() calculation
+    
+    week9ClassHWPartB(); // Countdown
+    
+    week9ClassHWPartC(); // Size of float
     
     week9ClassHWPartD(); // Cartesian - Polar Conversion
 
