@@ -9,33 +9,42 @@
 #include <stdio.h>
 #include <math.h>
 
-void cartesianToPolar(double x, double y, double *rPtr, double *thetaPtr)
+#define SUCCESS 0
+#define FAIL -1
+
+/* #############################################################################
+
+ XCODE HW A:
+ Use math library and add code to main.c displays sine of 1 radian
+    to 3 decimal points.  Should = 0.841
+ 
+ XCODE HW B:
+ Program counts backwards from 99 to 0 by 3, printing each #.
+ If # is divisible by 5, print "Found one!". Ex:
+ 
+ - 99
+ - 96
+ - 93
+ - 90
+ - Found one!
+ - 87
+ - ...
+ 
+ HW C:
+ Write a program to show you how much memory a float consumes.
+ 
+ HW D:
+ Modify cartesianToPolar() to handle reverse conversion, using &ptrs with NULL
+    as flags for direction.
+ 
+ ############################################################################ */
+
+int week8ClassPointerDemo()
 {
-    // Store the radius in teh supplied address
-    *rPtr = sqrt(x * x + y * y);
+    printf("#############################\n\n");
+    printf("Week 8 Class Lecture by James\n");
+    printf("\n#############################\n\n");
     
-    // Calcs theta
-    float theta;
-    if (x == 0.0) {
-        if (y == 0.0 ) {
-            theta = 0.0; // technically considered undef
-            
-        } else if (y > 0) {
-            theta = M_PI_2;
-        } else if (y < 0){
-            theta = -M_PI_2;
-        } else {
-            theta = atan(y/x);
-        }
-    }
-    // Store theta in the supplied address
-    *thetaPtr = theta;
-}
-
-
-int main(int argc, const char * argv[])
-{
-
     printf("Pointers lecture examples by James\n\n");
     
     // Part A
@@ -43,7 +52,7 @@ int main(int argc, const char * argv[])
     printf("Part A: i stores its value at: %p\n\n", &i);
     
     // Part B - since main() is a func and in memory, we can see its address
-    printf("Part B: this function starts at: %p\n\n", main);
+    printf("Part B: this function starts at: %p\n\n", week8ClassPointerDemo);
     
     // Part C
     int *addressOfI = &i; // DON'T FORGET THE '*'
@@ -60,7 +69,7 @@ int main(int argc, const char * argv[])
     // Part F - Sizes
     printf("Part F:\nAn int is %zu bytes\n", sizeof(int));
     printf("A pointer is %zu bytes\n", sizeof(int *));
-
+    
     printf("An int i is %zu bytes\n", sizeof(i));
     printf("A pointer is %zu bytes\n", sizeof(addressOfI));
     
@@ -79,20 +88,146 @@ int main(int argc, const char * argv[])
     printf("modf():\nintegerPart = %.0f, fractionPart = %.2f\n"
            , integerPart, fractionPart);
     
-    printf("\n==========================\n\n");
+    return SUCCESS;
+}
 
-    printf("Rectangular to Polar conversion lecture example by James");
-    printf("- see book\nContinued from previous modf() example\n");
-    printf("Use pi vars above\n");
+// *****************************************************************************
+
+int xlateCartesianPolar(double *pX, double *pY, double *pRad, double *pThet)
+{
+    
+    // Calculate theta
+    // http://en.wikipedia.org/wiki/Polar_coordinate#Converting_between_polar_and_Cartesian_coordinates
+    
+    if ( (pX != NULL) & (pY != NULL) ) {
+
+        // Store the radius in the supplied address
+        // *pY = 0.0;
+        // *pX = 0.0;
+        *pRad = sqrt( (*pX * *pX) + (*pY * *pY) );
+        
+        if (*pX == 0.0) {
+            
+            if (*pY == 0.0 ) {
+                *pThet = 0.0;          // technically considered undef
+            } else if (*pY > 0.0) {
+                *pThet = -M_PI_2/2;
+            } else if (*pY < 0.0){
+                *pThet = -M_PI_2;
+            }
+            
+        } else if (*pX < 0.0) {
+            
+            if (*pY >= 0.0) {
+                *pThet = atan( *pY / *pX ) + M_PI_2;
+            } else *pThet = atan( *pY / *pX ) - M_PI_2;
+            
+        } else { // x > 0
+            *pThet = atan( *pY / *pX );
+        }
+        
+    } else if ( (pRad != NULL) && (pThet != NULL) ) {
+        printf("radius: %.2f, theta: %.2f", *pRad, *pThet);
+        *pX = *pRad * cos(*pThet);
+        *pY = *pRad * sin(*pThet);
+        
+    } else {        // ERROR - at least one of the parameters is not set
+        printf("ERROR: Improper parameters passed to xlateCartesianPolar().\n");
+        return FAIL;
+    }
+    
+    // Store theta in the supplied address
+    // - Already done directly above.
+    
+    return SUCCESS;
+}
+
+// *****************************************************************************
+
+int week9ClassHWPartA()
+{
+    printf("HW Part A:\n\nsin(1.0) = %.3f\n\n", sin(1.0));
+    
+    printf("----------------------------\n\n");
+    
+    return SUCCESS;
+}
+
+// *****************************************************************************
+
+int week9ClassHWPartB()
+{
+    
+    
+    return SUCCESS;
+}
+
+// *****************************************************************************
+
+int week9ClassHWPartC()
+{
+    return SUCCESS;
+}
+
+// *****************************************************************************
+
+int week9ClassHWPartD()
+{
+    printf("HW Part D: Conversion between Cartesian and Polar coordinates.  ");
+    printf("See book.\n\n");
     
     double x = 3.0;
+    double *pX = &x;
+    
     double y = 4.0;
-    double radius;
-    double angle;
+    double *pY = &x;
     
-    cartesianToPolar(x, y, &radius, &angle);
-    printf("%.2f, %.2f becomes (%.2f radians, %.2f)\n", x, y, radius, angle);
+    double radius = 0.0;
+    double *pRadius = &radius;
     
-    return 0;
+    double angle = 0.0;
+    double *pAngle = &angle;
+    
+    // Cartesian to Polar
+    if(xlateCartesianPolar(pX, pY, pRadius, pAngle) == SUCCESS) {
+        printf("Cartesian to Polar: (%.2f, %.2f) becomes (%.2f radians, %.2f degrees)\n\n"
+               , *pX, y, radius, angle);
+    } else printf("xlateCartesianPolar() failed.\n\n");
+    
+    // Polar to Cartesian
+    // Use angle and radius from previous calculation
+    
+    if(xlateCartesianPolar(pX, pY, pRadius, pAngle) == SUCCESS)
+        printf("Polar to Cart: (%.2f, %.2f) becomes (%.2f radians, %.2f degrees)\n\n"
+               , *pX, y, radius, angle);
+    else printf("xlateCartesianPolar() failed.\n\n");
+    
+    // Foobarred parameters passed to xlateCartesianPolar()
+    pX = NULL;
+    pAngle = NULL;
+    if(xlateCartesianPolar(pX, pY, pRadius, pAngle) == SUCCESS)
+        printf("fooBar: %.2f, %.2f becomes (%.2f radians, %.2f degrees)\n\n"
+               , *pX, y, radius, angle);
+    else printf("ERROR: xlateCartesianPolar() returned failure.\n\n");
+    
+    return SUCCESS;
+}
+
+// *****************************************************************************
+
+int main(int argc, const char * argv[])
+{
+
+    week8ClassPointerDemo(); // Week 8 class pointer lecture examples
+    
+    printf("\n\n############################\n\n");
+    printf("      Week 9 Homework\n");
+    printf("\n############################\n\n");
+
+    week9ClassHWPartA();
+    
+    week9ClassHWPartD(); // Cartesian - Polar Conversion
+
+    return SUCCESS;
 }
 

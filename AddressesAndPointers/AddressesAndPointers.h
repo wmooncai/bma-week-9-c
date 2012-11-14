@@ -9,6 +9,10 @@
 #ifndef AddressesAndPointers_AddressesAndPointers_h
 #define AddressesAndPointers_AddressesAndPointers_h
 
-void cartesianToPolar(double, double, double, double)
+
+int week9ClassHWPartA()
+
+int week9ClassHWPartD()
+int xlateCartesianPolar(double*, double*, double*, double*)
 
 #endif
