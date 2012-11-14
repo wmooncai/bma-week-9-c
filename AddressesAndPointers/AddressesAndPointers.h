@@ -10,9 +10,13 @@
 #define AddressesAndPointers_AddressesAndPointers_h
 
 
-int week9ClassHWPartA()
+int week9HWPartA()
 
-int week9ClassHWPartD()
+int week9HWPartB()
+
+int week9HWPartC()
+
+int week9HWPartD()
 int xlateCartesianPolar(double*, double*, double*, double*)
 
 #endif
