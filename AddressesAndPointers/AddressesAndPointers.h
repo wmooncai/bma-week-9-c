@@ -18,5 +18,6 @@ int week9HWPartC()
 
 int week9HWPartD()
 int xlateCartesianPolar(double*, double*, double*, double*)
+int cartesianToPolar(double*, double*, double*, double*)
 
 #endif

@@ -93,6 +93,46 @@ int week8ClassPointerDemo()
 
 // *****************************************************************************
 
+int week9HWPartA()
+{
+    printf("HW Part A:\n\nsin(1.0) = %.3f\n\n", sin(1.0));
+    
+    printf("----------------------------\n\n");
+    
+    return SUCCESS;
+}
+
+// *****************************************************************************
+
+int week9HWPartB()
+{
+    printf("HW Part B:\n\nCountdown from 99 to 0\n\n");
+    
+    for (int i=99; i > -1; i = i - 3)
+    {
+        printf("- %d\n", i);
+        if ( ( i % 5) == 0 ) printf("- Found one!\n");
+    }
+
+    printf("\n----------------------------\n\n");
+    
+    return SUCCESS;
+}
+
+// *****************************************************************************
+
+int week9HWPartC()
+{
+    printf("HW Part C:\n\nThe size of a float is %ld bytes.\n\n"
+           , sizeof(float));
+
+    printf("----------------------------\n\n");
+
+    return SUCCESS;
+}
+
+// *****************************************************************************
+
 int xlateCartesianPolar(double *pX, double *pY, double *pRad, double *pThet)
 {
     
@@ -100,7 +140,7 @@ int xlateCartesianPolar(double *pX, double *pY, double *pRad, double *pThet)
     // http://en.wikipedia.org/wiki/Polar_coordinate#Converting_between_polar_and_Cartesian_coordinates
     
     if ( (pX != NULL) & (pY != NULL) ) {
-
+        
         // Store the radius in the supplied address
         // *pY = 0.0;
         // *pX = 0.0;
@@ -144,43 +184,16 @@ int xlateCartesianPolar(double *pX, double *pY, double *pRad, double *pThet)
 
 // *****************************************************************************
 
-int week9HWPartA()
+int cartesianToPolar(double *pXcoord, double *pYcoord, double *pR, double *pT)
 {
-    printf("HW Part A:\n\nsin(1.0) = %.3f\n\n", sin(1.0));
+    /* This is a wrapper to maintain the original function name, as I felt that
+        xlateCartesianPolar() made more sense given its new bi-directional
+        nature.
+     */
     
-    printf("----------------------------\n\n");
-    
-    return SUCCESS;
+    return xlateCartesianPolar(pXcoord, pYcoord, pR, pT);
 }
 
-// *****************************************************************************
-
-int week9HWPartB()
-{
-    printf("HW Part B:\n\nCountdown from 99 to 0\n\n");
-    
-    for (int i=99; i > -1; i = i - 3)
-    {
-        printf("- %d\n", i);
-        if ( ( i % 5) == 0 ) printf("- Found one!\n");
-    }
-
-    printf("\n----------------------------\n\n");
-    
-    return SUCCESS;
-}
-
-// *****************************************************************************
-
-int week9HWPartC()
-{
-    printf("HW Part C:\n\nThe size of a float is %ld bytes.\n\n"
-           , sizeof(float));
-
-    printf("----------------------------\n\n");
-
-    return SUCCESS;
-}
 
 // *****************************************************************************
 
