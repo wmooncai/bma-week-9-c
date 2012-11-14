@@ -45,7 +45,7 @@
 		3EA767351651BD4200501BBD = {
 			isa = PBXGroup;
 			children = (
-				3EA767431651BD4200501BBD /* AddressesAndPointers */,
+				3EA767431651BD4200501BBD /* bma-week-9-c */,
 				3EA767411651BD4200501BBD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,13 +58,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3EA767431651BD4200501BBD /* AddressesAndPointers */ = {
+		3EA767431651BD4200501BBD /* bma-week-9-c */ = {
 			isa = PBXGroup;
 			children = (
 				3EA767441651BD4200501BBD /* main.c */,
 				3EA767461651BD4200501BBD /* AddressesAndPointers.1 */,
 				3EA7674D1651D36A00501BBD /* AddressesAndPointers.h */,
 			);
+			name = "bma-week-9-c";
 			path = AddressesAndPointers;
 			sourceTree = "<group>";
 		};
