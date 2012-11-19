@@ -96,7 +96,7 @@ int week8ClassPointerDemo()
 
 int week9HWPartA()
 {
-    printf("HW Part A:\n\nsin(1.0) = %.3f\n\n", sin(1.0));
+    printf("HW Part A:\n\nsin(1.0) [should be 0.841] = %.3f\n\n", sin(1.0));
     
     printf("----------------------------\n\n");
     
@@ -111,8 +111,13 @@ int week9HWPartB()
     
     for (int i=99; i > -1; i = i - 3)
     {
+        /*
         printf("- %d\n", i);
-        if ( ( i % 5) == 0 ) printf("- Found one!\n");
+        if ( (i % 5) == 0 ) printf("- Found one!\n");
+        */
+        
+        // If you prefer it in a single statement
+        printf("- %d\n%s", i, ( (i % 5) == 0 ) ? "- Found one!\n" : "");
     }
 
     printf("\n----------------------------\n\n");
